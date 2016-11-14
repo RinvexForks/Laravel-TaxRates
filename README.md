@@ -12,27 +12,20 @@ And then include the service provider within `app/config/app.php`.
 
 ``` php
 'providers' => [
-    'BrianFaust\TaxRates\ServiceProvider'
+    BrianFaust\TaxRates\TaxRatesServiceProvider::class,
 ];
 ```
 
 To get started, you'll need to publish the vendor assets and migrate the taxrates table:
 
 ```bash
-php artisan vendor:publish && php artisan migrate
+php artisan vendor:publish --provider="BrianFaust\TaxRates\TaxRatesServiceProvider" && php artisan migrate
 ```
 
 Now you can seed the taxrates into the database like this.
 
 ```bash
 php artisan taxrates:seed
-```
-
-## Usage
-
-``` php
-$skeleton = new BrianFaust\Skeleton();
-echo $skeleton->echoPhrase('Hello, BrianFaust!');
 ```
 
 ## Security
