@@ -18,9 +18,9 @@ class CreateTaxRatesTable extends Migration
     {
         Schema::create('tax_rates', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code');
-            $table->string('country');
-            $table->decimal('rate', 13, 2);
+            $table->unsignedInteger('country_id');
+            $table->decimal('rate');
+            $table->decimal('percentage');
             $table->timestamps();
         });
     }

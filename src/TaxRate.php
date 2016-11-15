@@ -20,5 +20,13 @@ class TaxRate extends Model
      *
      * @var array
      */
-    protected $fillable = ['code', 'country', 'rate'];
+    protected $fillable = ['country_id', 'rate', 'percentage'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function country()
+    {
+        return $this->belongsTo(config('taxrates.models.country'));
+    }
 }

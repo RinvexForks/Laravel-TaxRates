@@ -12,6 +12,7 @@
 namespace BrianFaust\TaxRates;
 
 use BrianFaust\ServiceProvider\ServiceProvider;
+use BrianFaust\Countries\CountriesServiceProvider;
 
 class TaxRatesServiceProvider extends ServiceProvider
 {
@@ -36,6 +37,8 @@ class TaxRatesServiceProvider extends ServiceProvider
         $this->mergeConfig();
 
         $this->commands(SeedTaxRates::class);
+
+        $this->app->register(CountriesServiceProvider::class);
     }
 
     /**
@@ -45,7 +48,10 @@ class TaxRatesServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array_merge(parent::provides(), [SeedTaxRates::class]);
+        return array_merge(parent::provides(), [
+            SeedTaxRates::class,
+            CountriesServiceProvider::class
+        ]);
     }
 
     /**

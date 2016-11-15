@@ -18,7 +18,8 @@
     }],
     "require": {
         "php": "^5.6 || ^7.0",
-        "faustbrian/laravel-service-provider": "^1.0"
+        "faustbrian/laravel-service-provider": "^1.0",
+        "faustbrian/laravel-countries": "^2.0"
     },
     "require-dev": {
         "graham-campbell/testbench": "^3.1",

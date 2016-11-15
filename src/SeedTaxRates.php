@@ -12,6 +12,7 @@
 namespace BrianFaust\TaxRates;
 
 use Illuminate\Console\Command;
+use Illuminate\Database\Eloquent\Model;
 
 class SeedTaxRates extends Command
 {
@@ -20,7 +21,7 @@ class SeedTaxRates extends Command
      *
      * @var string
      */
-    protected $signature = 'taxrates:seed';
+    protected $signature = 'seed:taxrates';
 
     /**
      * The console command description.
@@ -34,14 +35,24 @@ class SeedTaxRates extends Command
      */
     public function handle()
     {
-        $model = $this->getModel();
-        $model->truncate();
+        $taxrate = $this->getModel('taxrate');
+        $taxrate->truncate();
 
         $data = base_path('vendor/faustbrian/laravel-taxrates/resources/taxrates.json');
         $data = json_decode(file_get_contents($data), true);
 
-        foreach ($data as $country => $rate) {
-            $model->create(compact('country', 'rate'));
+        foreach ($this->getModel('country')->all() as $country) {
+            $rate = 0;
+
+            if (array_key_exists($country['name']['common'], $data)) {
+                $rate = $data[$country['name']['common']];
+            }
+
+            $taxrate->create([
+                'country_id' => $country->id,
+                'rate'       => $rate,
+                'percentage' => $rate * 100,
+            ]);
         }
 
         $this->getOutput()->writeln('<info>Seeded:</info> TaxRates');
@@ -50,9 +61,9 @@ class SeedTaxRates extends Command
     /**
      * @return \Illuminate\Databse\Eloquent\Model
      */
-    private function getModel()
+    private function getModel(string $model) : Model
     {
-        $model = config('taxrates.model');
+        $model = config("taxrates.models.$model");
 
         return new $model();
     }
