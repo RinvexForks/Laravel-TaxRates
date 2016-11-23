@@ -35,6 +35,6 @@ return [
 
        'country' => BrianFaust\Countries\Country::class,
 
-   ]
+   ],
 
 ];

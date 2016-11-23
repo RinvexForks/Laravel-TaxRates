@@ -50,7 +50,7 @@ class TaxRatesServiceProvider extends ServiceProvider
     {
         return array_merge(parent::provides(), [
             SeedTaxRates::class,
-            CountriesServiceProvider::class
+            CountriesServiceProvider::class,
         ]);
     }
 
