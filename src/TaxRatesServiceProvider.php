@@ -21,9 +21,8 @@ class TaxRatesServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        parent::boot();
-
         $this->publishMigrations();
+
         $this->publishConfig();
     }
 
