@@ -11,9 +11,7 @@ $ composer require faustbrian/laravel-taxrates
 And then include the service provider within `app/config/app.php`.
 
 ``` php
-'providers' => [
-    BrianFaust\TaxRates\TaxRatesServiceProvider::class,
-];
+BrianFaust\TaxRates\TaxRatesServiceProvider::class
 ```
 
 To get started, you'll need to publish the vendor assets and migrate the taxrates table:
