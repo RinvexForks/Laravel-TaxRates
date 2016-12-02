@@ -11,8 +11,8 @@
 
 namespace BrianFaust\TaxRates;
 
-use BrianFaust\ServiceProvider\ServiceProvider;
 use BrianFaust\Countries\CountriesServiceProvider;
+use BrianFaust\ServiceProvider\ServiceProvider;
 
 class TaxRatesServiceProvider extends ServiceProvider
 {

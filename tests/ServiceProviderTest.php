@@ -11,8 +11,8 @@
 
 namespace BrianFaust\Tests\TaxRates;
 
-use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 use BrianFaust\TaxRates\Console\SeedTaxRates;
+use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 
 class ServiceProviderTest extends TestCase
 {
